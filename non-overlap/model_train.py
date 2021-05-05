@@ -45,7 +45,7 @@ flags.DEFINE_boolean(
     'VGGish as a fixed feature extractor.')
 
 flags.DEFINE_string(
-    'checkpoint', '../vggish_model.ckpt',
+    'checkpoint', '/content/drive/MyDrive/vggish_model.ckpt',
     'Path to the VGGish checkpoint file.')
 
 FLAGS = flags.FLAGS
