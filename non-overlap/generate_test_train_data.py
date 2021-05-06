@@ -46,7 +46,7 @@ for x in range(5):
 
 # Make a dictionary of type 'wav_file':'emotion'.
 
-with open('/content/df_iemocap_1.csv') as f :
+with open('/content/drive/MyDrive/label.csv') as f :
     csv_reader = csv.reader(f)
     lines = [x for x in csv_reader]
 
