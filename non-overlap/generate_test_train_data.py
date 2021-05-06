@@ -46,13 +46,13 @@ for x in range(5):
 
 # Make a dictionary of type 'wav_file':'emotion'.
 
-with open('/content/drive/MyDrive/label.csv') as f :
+with open('/content/df_iemocap_1.csv') as f :
     csv_reader = csv.reader(f)
     lines = [x for x in csv_reader]
 
 raw_data = {}
 for line in lines:
-    raw_data[line[0]] = line[1]
+    raw_data[line[2]] = line[3]
 
 # Filter out all the emotions that are not considered.
 
