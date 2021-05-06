@@ -85,11 +85,11 @@ def _get_examples_batch(x,labeled_data,batch_size=_BATCH_SIZE):
   labels = [label for (_, label) in batch_labeled_data]
   return (features, labels)
 
-f2 = h5py.File('val.hdf5','r')
+f2 = h5py.File('/content/drive/MyDrive/non-overlap-data/val.hdf5','r')
 val_data,val_label = f2['val_data'],f2['val_label']
 val_labeled_data = list(zip(val_data,val_label))
 
-f3 = h5py.File('test.hdf5','r')
+f3 = h5py.File('/content/drive/MyDrive/non-overlap-data/test.hdf5','r')
 test_data,test_label = f3['test_data'],f3['test_label']
 test_labeled_data = list(zip(test_data,test_label))
 
