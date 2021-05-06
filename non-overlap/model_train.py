@@ -58,12 +58,12 @@ _PATIENCE = 5
 _LIMIT = 0.01
 
 
-train_filename = 'train'
-if shuffle_train:
-    train_filename = train_filename + '_shuffled'
-train_filename = train_filename + '.hdf5'
+#train_filename = 'train'
+#if shuffle_train:
+ #   train_filename = train_filename + '_shuffled'
+#train_filename = train_filename + '.hdf5'
 
-f = h5py.File(train_filename,'r')
+f = h5py.File('/content/drive/MyDrive/non-overlap-data/train.hdf5','r')
 train_data,train_label = f['train_data'],f['train_label']
 labeled_data = list(zip(train_data,train_label))
 
