@@ -3,19 +3,19 @@ import numpy as np
 from collections import Counter
 import random
 
-with open('test_clip_length.txt','r') as f:
+with open('/content/drive/MyDrive/non-overlap-data/test_clip_length.txt','r') as f:
     line = f.readline().split()
 test_clip_length = [int(x) for x in line]
 
-with open('test_preds.txt','r') as f:
+with open('/content/drive/MyDrive/result-non-overlap/test_preds.txt','r') as f:
     line = f.readline().split()
 test_preds = [int(x) for x in line]
 
-with open('test_labels.txt','r') as f:
+with open('/content/drive/MyDrive/result-non-overlap/test_labels.txt','r') as f:
     line = f.readline().split()
 test_labels = [int(x) for x in line]
 
-with open('test_logits.txt','r') as f:
+with open('/content/drive/MyDrive/result-non-overlap/test_logits.txt','r') as f:
     line = f.readlines()
 test_logits = np.asarray([[float(y) for y in x.strip().split()] for x in line])
 
