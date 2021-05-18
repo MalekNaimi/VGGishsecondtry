@@ -39,20 +39,20 @@ list_files = []
 
 for x in range(5):
     sess_name = 'Session' + str(x+1)
-    path = '/home/pkumar99/iit-roorkee/multimodal-speech-emotion/data/raw/IEMOCAP_full_release/' + sess_name + '/sentences/wav/'
+    path = '/content/drive/MyDrive/DATAFINAL/' + sess_name + '/sentences/wav/'
     file_search(path, list_files)
     list_files = sorted(list_files)
     print(sess_name + ", #sum files: " + str(len(list_files)))
 
 # Make a dictionary of type 'wav_file':'emotion'.
 
-with open('/home/pkumar99/iit-roorkee/multimodal-speech-emotion/data/processed/IEMOCAP/label.csv') as f :
+with open('/content/drive/MyDrive/label.csv') as f :
     csv_reader = csv.reader(f)
     lines = [x for x in csv_reader]
 
 raw_data = {}
 for line in lines:
-    raw_data[line[0]] = line[1]
+    raw_data[line[2]] = line[3]
 
 # Filter out all the emotions that are not considered.
 
