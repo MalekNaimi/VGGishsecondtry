@@ -44,7 +44,7 @@ flags.DEFINE_boolean(
     'VGGish as a fixed feature extractor.')
 
 flags.DEFINE_string(
-    'checkpoint', '../vggish_model.ckpt',
+    'checkpoint', '/content/drive/MyDrive/vggish_model.ckpt',
     'Path to the VGGish checkpoint file.')
 
 FLAGS = flags.FLAGS
@@ -57,12 +57,12 @@ _PATIENCE = 5
 _LIMIT = 0.01
 
 
-train_filename = 'train'
-if shuffle_train:
-    train_filename = train_filename + '_shuffled'
-train_filename = train_filename + '.hdf5'
+#train_filename = 'train'
+#if shuffle_train:
+#    train_filename = train_filename + '_shuffled'
+#train_filename = train_filename + '.hdf5'
 
-f = h5py.File(train_filename,'r')
+f = h5py.File('/content/train.hdf5','r')
 train_data,train_label = f['train_data'],f['train_label']
 labeled_data = list(zip(train_data,train_label))
 
@@ -84,11 +84,11 @@ def _get_examples_batch(x,labeled_data,batch_size=_BATCH_SIZE):
   labels = [label for (_, label) in batch_labeled_data]
   return (features, labels)
 
-f2 = h5py.File('val.hdf5','r')
+f2 = h5py.File('/content/val.hdf5','r')
 val_data,val_label = f2['val_data'],f2['val_label']
 val_labeled_data = list(zip(val_data,val_label))
 
-f3 = h5py.File('test.hdf5','r')
+f3 = h5py.File('/content/test.hdf5','r')
 test_data,test_label = f3['test_data'],f3['test_label']
 test_labeled_data = list(zip(test_data,test_label))
 
@@ -217,3 +217,4 @@ with tf.Session() as sess:
                 'model_num_units_'+ str(FLAGS.num_units) + '_train_' + str(FLAGS.train_vggish)\
                     + ' test_acc:' + str(test_acc) + ' ' + 'val_acc:' + str(best_val_acc) + '\n')
     print('Finished Training. Results appended to log file.')
+
