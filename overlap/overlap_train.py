@@ -51,7 +51,7 @@ FLAGS = flags.FLAGS
 shuffle_train = True
 
 _NUM_EPOCHS = 10000
-_NUM_CLASSES = 2
+_NUM_CLASSES = 4
 _BATCH_SIZE = 16
 _PATIENCE = 5
 _LIMIT = 0.01
