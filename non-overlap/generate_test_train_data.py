@@ -108,7 +108,7 @@ test_clip_length = [0]
 train_data,val_data,test_data = [],[],[]
 train_label,val_label,test_label = [],[],[]
 for i in tqdm(range(len(list_files))):
-    suffix = list_files[i].split('/')[-1][:-4]
+    suffix = list_files[i].split('/')[-2]+'/'+list_files[i].split('/')[-1]
     if suffix in train_key_dict or suffix in val_key_dict or suffix in test_key_dict:
         one_hot_label = [0]*num_classes
 
