@@ -37,26 +37,27 @@ def file_search(dirname, ret, list_avoid_dir=[]):
 
 list_files = []
 
-for x in range(5):
-    sess_name = 'Session' + str(x+1)
-    path = '/content/drive/MyDrive/DATAFINAL/' + sess_name + '/sentences/wav/'
+for x in range(1,52):
+    A = 'A' + str(x)
+    path = '/content/drive/MyDrive/Segmented Audios/' + A 
     file_search(path, list_files)
     list_files = sorted(list_files)
-    print(sess_name + ", #sum files: " + str(len(list_files)))
+    print(A + ", #sum files: " + str(len(list_files)))
 
 # Make a dictionary of type 'wav_file':'emotion'.
 
-with open('/content/drive/MyDrive/label.csv') as f :
+with open('/content/drive/MyDrive/dataf.csv') as f :
     csv_reader = csv.reader(f)
     lines = [x for x in csv_reader]
 
+
 raw_data = {}
 for line in lines:
-    raw_data[line[2]] = line[3]
-
+    raw_data[line[0]] = line[3]
+    
 # Filter out all the emotions that are not considered.
 
-emotion_list = ['ang','hap','exc','sad','neu']
+emotion_list = ['a','h','s','n']
 data = {}
 for key in list(raw_data.keys()):
     if raw_data[key] in emotion_list:
@@ -64,7 +65,7 @@ for key in list(raw_data.keys()):
 
 # Shuffle data if required.
 
-random.seed(221262)
+random.seed(2632)
 
 if shuffle_data:
     keys = list(data.keys()) 
@@ -88,17 +89,10 @@ for key in keys[int((train_split+val_split)*n_keys):]:
 # Assign a number to each of the different emotions
 
 list_category = [
-                'ang',
-                'hap',
-                'sad',
-                'neu',
-                'fru',
-                'exc',
-                'fea',
-                'sur',
-                'dis',
-                'oth',
-                'xxx'
+                'a',
+                'h',
+                's',
+                'n',
                 ]
 
 category = {}
@@ -108,9 +102,6 @@ for c_type in list_category:
     else:
         category[c_type] = len(category)
 
-# Excited is considered the same class as happiness. Modify this segment when using one vs all classifier.
-
-category['exc'] = 1
  
 emotions = [0]*num_classes
 test_clip_length = [0]
@@ -143,7 +134,7 @@ for i in tqdm(range(len(list_files))):
 
 if shuffle_train:
     labelled_train_data = list(zip(train_data,train_label))
-    random.seed(221262)
+    random.seed(2632)
     random.shuffle(labelled_train_data)
     train_data = [data for (data,_) in labelled_train_data]
     train_label = [label for (_,label) in labelled_train_data]
