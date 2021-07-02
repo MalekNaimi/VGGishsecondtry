@@ -92,7 +92,7 @@ def wavfile_to_examples(wav_file):
   wav_data, sr = sf.read(wav_file, dtype='int16')
   assert wav_data.dtype == np.int16, 'Bad sample type: %r' % wav_data.dtype
   samples = wav_data / 32768.0  # Convert to [-1.0, +1.0]
-  # import matplotlib.pyplot as plt
-  # plt.plot(samples)
-  # plt.show()
+  import matplotlib.pyplot as plt
+  plt.plot(samples)
+  plt.show()
   return waveform_to_examples(samples, sr)
