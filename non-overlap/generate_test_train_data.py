@@ -65,7 +65,7 @@ for key in list(raw_data.keys()):
 
 # Shuffle data if required.
 
-random.seed(2632)
+random.seed(221262)
 
 if shuffle_data:
     keys = list(data.keys()) 
@@ -134,7 +134,7 @@ for i in tqdm(range(len(list_files))):
 
 if shuffle_train:
     labelled_train_data = list(zip(train_data,train_label))
-    random.seed(2632)
+    random.seed(221262)
     random.shuffle(labelled_train_data)
     train_data = [data for (data,_) in labelled_train_data]
     train_label = [label for (_,label) in labelled_train_data]
@@ -142,9 +142,11 @@ if shuffle_train:
 train_data,val_data,test_data = np.asarray(train_data),np.asarray(val_data),np.asarray(test_data)
 train_label,val_label,test_label = np.asarray(train_label),np.asarray(val_label),np.asarray(test_label)
 
-print(np.sum(train_label),np.sum(val_label),np.sum(test_label))
-print(train_label.shape,val_label.shape,test_label.shape)
-print(emotions)
+#print(np.sum(train_label),np.sum(val_label),np.sum(test_label))
+print(train_data)
+print(train_label)
+#print(train_label.shape,val_label.shape,test_label.shape)
+#print(emotions)
 
 with open('test_clip_length.txt','w') as f:
     f.write(' '.join([str(x) for x in test_clip_length]))
