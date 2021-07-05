@@ -19,7 +19,7 @@ with open('/content/VGGish-Model/non-overlap/test_logits.txt','r') as f:
     line = f.readlines()
 test_logits = np.asarray([[float(y) for y in x.strip().split()] for x in line])
 
-def confusion_matrix(label,pred,num_classes=2):
+def confusion_matrix(label,pred,num_classes=4):
     hist = np.zeros((num_classes,num_classes))
     for i,j in zip(label,pred):
         hist[i,j] += 1
