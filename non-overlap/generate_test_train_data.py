@@ -142,10 +142,11 @@ if shuffle_train:
 train_data,val_data,test_data = np.asarray(train_data),np.asarray(val_data),np.asarray(test_data)
 train_label,val_label,test_label = np.asarray(train_label),np.asarray(val_label),np.asarray(test_label)
 
-#print(np.sum(train_label),np.sum(val_label),np.sum(test_label))
-print(train_label)
-#print(train_label.shape,val_label.shape,test_label.shape)
-#print(emotions)
+print(np.sum(train_label),np.sum(val_label),np.sum(test_label))
+print(train_label.shape,val_label.shape,test_label.shape)
+print(emotions)
+print(train_label[0])
+
 
 with open('test_clip_length.txt','w') as f:
     f.write(' '.join([str(x) for x in test_clip_length]))
