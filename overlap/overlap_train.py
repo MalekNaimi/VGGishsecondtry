@@ -218,3 +218,5 @@ with tf.Session() as sess:
                     + ' test_acc:' + str(test_acc) + ' ' + 'val_acc:' + str(best_val_acc) + '\n')
     print('Finished Training. Results appended to log file.')
 
+
+
