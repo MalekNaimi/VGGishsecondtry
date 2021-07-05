@@ -13,9 +13,9 @@ import vggish_input_overlap
 
 shuffle_data = True
 shuffle_train = False
-train_split = 0.8
-val_split  = 0.1
-test_split = 0.1
+train_split = 0.7
+val_split  = 0.15
+test_split = 0.15
 num_classes = 4
 
 # File search utility function.
