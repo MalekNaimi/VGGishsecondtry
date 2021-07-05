@@ -38,25 +38,25 @@ def file_search(dirname, ret, list_avoid_dir=[]):
 list_files = []
 
 for x in range(5):
-    sess_name = 'Session' + str(x+1)
-    path = '/content/drive/MyDrive/DATAFINAL/' + sess_name + '/sentences/wav/'
+    A = 'A' + str(x)
+    path = '/content/drive/MyDrive/Segmented Audios/' + A 
     file_search(path, list_files)
     list_files = sorted(list_files)
     print(sess_name + ", #sum files: " + str(len(list_files)))
 
 # Make a dictionary of type 'wav_file':'emotion'.
 
-with open('/content/drive/MyDrive/label.csv') as f :
+with open('/content/drive/MyDrive/dataf.csv') as f :
     csv_reader = csv.reader(f)
     lines = [x for x in csv_reader]
 
 raw_data = {}
 for line in lines:
-    raw_data[line[2]] = line[3]
+    raw_data[line[0]] = line[3]
 
 # Filter out all the emotions that are not considered.
 
-emotion_list = ['ang','hap','exc','sad','neu']
+emotion_list = ['a','h','s','n']
 data = {}
 for key in list(raw_data.keys()):
     if raw_data[key] in emotion_list:
@@ -85,17 +85,10 @@ for key in keys[int((train_split+val_split)*n_keys):]:
 # Assign a number to each of the different emotions
 
 list_category = [
-                'ang',
-                'hap',
-                'sad',
-                'neu',
-                'fru',
-                'exc',
-                'fea',
-                'sur',
-                'dis',
-                'oth',
-                'xxx'
+                'a',
+                'h',
+                's',
+                'n',
                 ]
 
 category = {}
@@ -105,9 +98,6 @@ for c_type in list_category:
     else:
         category[c_type] = len(category)
 
-# Excited is considered the same class as happiness. Modify this segment when using one vs all classifier.
-
-category['exc'] = 1
  
 emotions = [0]*num_classes
 test_clip_length = [0]
@@ -115,7 +105,7 @@ train_data,val_data,test_data = [],[],[]
 train_label,val_label,test_label = [],[],[]
 f = 0
 for i in tqdm(range(len(list_files))):
-    suffix = list_files[i].split('/')[-1][:-4]
+    suffix = list_files[i].split('/')[-2]+'/'+list_files[i].split('/')[-1]
     if suffix in train_key_dict or suffix in val_key_dict or suffix in test_key_dict:
         one_hot_label = [0]*num_classes
         original_length_in_samples,length,spectrogram = 
