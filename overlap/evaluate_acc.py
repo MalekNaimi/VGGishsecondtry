@@ -19,7 +19,7 @@ with open('/content/VGGish-Model/overlap/test_logits.txt','r') as f:
     line = f.readlines()
 test_logits = np.asarray([[float(y) for y in x.strip().split()] for x in line])
 
-def confusion_matrix(label,pred,num_classes=2):
+def confusion_matrix(label,pred,num_classes=4):
     hist = np.zeros((num_classes,num_classes))
     for i,j in zip(label,pred):
         hist[i,j] += 1
@@ -78,4 +78,6 @@ print('absolute_clip_accuracy:',np.sum(abs_cnt)/float(len(test_clip_length)-1))
 print('standard_clip_accuracy:',np.sum(np.asarray(standard_cnt) == np.asarray(y_clip_label))/float(len(test_clip_length)-1))
 print('average_logits_clip_accuracy:',np.sum(np.asarray(logits_cnt) == np.asarray(y_clip_label))/float(len(test_clip_length)-1))
 np.set_printoptions(formatter={'float': lambda x: "{0:0.3f}".format(x)})
+print(confusion_matrix(y_clip_label,standard_cnt))
+
 print(confusion_matrix(y_clip_label,standard_cnt))
