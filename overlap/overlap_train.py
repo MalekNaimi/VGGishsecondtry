@@ -62,7 +62,7 @@ _LIMIT = 0.01
 #    train_filename = train_filename + '_shuffled'
 #train_filename = train_filename + '.hdf5'
 
-f = h5py.File('/content/drive/MyDrive/overlap-data/train.hdf5','r')
+f = h5py.File('/content/VGGish-Model/overlap/train.hdf5','r')
 train_data,train_label = f['train_data'],f['train_label']
 labeled_data = list(zip(train_data,train_label))
 
@@ -84,11 +84,11 @@ def _get_examples_batch(x,labeled_data,batch_size=_BATCH_SIZE):
   labels = [label for (_, label) in batch_labeled_data]
   return (features, labels)
 
-f2 = h5py.File('/content/drive/MyDrive/overlap-data/val.hdf5','r')
+f2 = h5py.File('/content/VGGish-Model/overlap/val.hdf5','r')
 val_data,val_label = f2['val_data'],f2['val_label']
 val_labeled_data = list(zip(val_data,val_label))
 
-f3 = h5py.File('/content/drive/MyDrive/overlap-data/test.hdf5','r')
+f3 = h5py.File('/content/VGGish-Model/overlap/test.hdf5','r')
 test_data,test_label = f3['test_data'],f3['test_label']
 test_labeled_data = list(zip(test_data,test_label))
 
