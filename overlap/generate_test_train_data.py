@@ -37,12 +37,12 @@ def file_search(dirname, ret, list_avoid_dir=[]):
 
 list_files = []
 
-for x in range(5):
+for x in range(1,52):
     A = 'A' + str(x)
     path = '/content/drive/MyDrive/Segmented Audios/' + A 
     file_search(path, list_files)
     list_files = sorted(list_files)
-    print(sess_name + ", #sum files: " + str(len(list_files)))
+    print(A + ", #sum files: " + str(len(list_files)))
 
 # Make a dictionary of type 'wav_file':'emotion'.
 
@@ -108,8 +108,7 @@ for i in tqdm(range(len(list_files))):
     suffix = list_files[i].split('/')[-2]+'/'+list_files[i].split('/')[-1]
     if suffix in train_key_dict or suffix in val_key_dict or suffix in test_key_dict:
         one_hot_label = [0]*num_classes
-        original_length_in_samples,length,spectrogram = 
-        vggish_input_overlap.wavfile_to_examples(list_files[i])
+        original_length_in_samples,length,spectrogram = vggish_input_overlap.wavfile_to_examples(list_files[i])
         
         emotions[category[data[suffix]]] += spectrogram.shape[0]
         if suffix in train_key_dict:
