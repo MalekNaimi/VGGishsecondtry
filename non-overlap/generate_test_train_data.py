@@ -145,7 +145,7 @@ train_label,val_label,test_label = np.asarray(train_label),np.asarray(val_label)
 print(np.sum(train_label),np.sum(val_label),np.sum(test_label))
 print(train_label.shape,val_label.shape,test_label.shape)
 print(emotions)
-print(train_label[0])
+print(test_label)
 
 
 with open('test_clip_length.txt','w') as f:
