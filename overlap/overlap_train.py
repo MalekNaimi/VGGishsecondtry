@@ -103,7 +103,7 @@ fc = slim.fully_connected(embeddings, num_units)
 #fc1= slim.fully_connected(fc,num_units)
 # Add a classifier layer at the end, consisting of parallel logistic classifiers, one per class. This allows for multi-class tasks.
 
-logits = slim.fully_connected(fc1, _NUM_CLASSES, activation_fn=None, scope='logits')
+logits = slim.fully_connected(fc, _NUM_CLASSES, activation_fn=None, scope='logits')
 logits = tf.sigmoid(logits, name='prediction')
 
 # Add training ops.
