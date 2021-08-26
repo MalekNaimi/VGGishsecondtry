@@ -126,6 +126,7 @@ saver = tf.train.Saver()
 # Initialize all variables in the model, and then load the pre-trained
 # VGGish checkpoint.
 with tf.Session() as sess:
+    writer=tf.summary.FileWriter("./logs",sess.graph)
     sess.run(tf.global_variables_initializer())
     sess.run(tf.local_variables_initializer())
 
@@ -218,6 +219,7 @@ with tf.Session() as sess:
                 'model_num_units_'+ str(FLAGS.num_units) + '_train_' + str(FLAGS.train_vggish)\
                     + ' test_acc:' + str(test_acc) + ' ' + 'val_acc:' + str(best_val_acc) + '\n')
     print('Finished Training. Results appended to log file.')
+    writer.close()
 
 
 acc = history.history['acc']
