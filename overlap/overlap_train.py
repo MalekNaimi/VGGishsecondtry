@@ -33,7 +33,7 @@ flags = tf.app.flags
 slim = tf.contrib.slim
 
 flags.DEFINE_integer(
-    'num_units', 100,
+    'num_units', 200,
     'Number of units of examples to feed into the model.'
     )
 
@@ -100,9 +100,10 @@ embeddings = vggish_slim.define_vggish_slim(FLAGS.train_vggish)
 num_units = FLAGS.num_units
 
 fc = slim.fully_connected(embeddings, num_units)
-
+fc1= slim.fully_connected(fc,num_units)
 # Add a classifier layer at the end, consisting of parallel logistic classifiers, one per class. This allows for multi-class tasks.
-logits = slim.fully_connected(fc, _NUM_CLASSES, activation_fn=None, scope='logits')
+
+logits = slim.fully_connected(fc1, _NUM_CLASSES, activation_fn=None, scope='logits')
 # logits = tf.sigmoid(logits, name='prediction')
 
 # Add training ops.
